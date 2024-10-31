@@ -52,4 +52,11 @@ public class TicketService {
 
     }
 
+    public Ticket findById(String idTicket) {
+        if (ticketsStorage.containsKey(idTicket)) {
+            return ticketsStorage.get(idTicket);
+        } else {
+            throw new IllegalArgumentException("No ticket with id " + idTicket);
+        }
+    }
 }
