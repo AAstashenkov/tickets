@@ -1,13 +1,17 @@
-package org.asta;
+package org.asta.model;
+
+import org.asta.abstracts.Functional;
+import org.asta.interfaces.Share;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Objects;
+import java.util.Random;
 
 /**
  * @author Asta
  */
-public class Ticket {
+public class Ticket extends Functional implements Share {
 
     private String id;
     private String concertHall;
@@ -18,9 +22,10 @@ public class Ticket {
     private double maxBackpackWeight;
     private BigDecimal price;
 
+    private static final Random random = new Random();
+
     public Ticket(){
     }
-
 
     public Ticket(String id, String concertHall, int eventCode, LocalDateTime time,
                   boolean isPromo, char stadiumSector, double maxBackpackWeight, BigDecimal price) {
@@ -113,6 +118,10 @@ public class Ticket {
         this.price = price;
     }
 
+    public boolean isCorrect() {
+        return random.nextBoolean();
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -138,6 +147,16 @@ public class Ticket {
                 ", maxBackpackWeight=" + maxBackpackWeight +
                 ", price=" + price +
                 '}';
+    }
+
+    @Override
+    public void shareByPhone(String phoneNumber) {
+        System.out.println("Ticket shared via phone to: " + phoneNumber);
+    }
+
+    @Override
+    public void shareByEmail(String email) {
+        System.out.println("Ticket shared via email to: " + email);
     }
 }
 
