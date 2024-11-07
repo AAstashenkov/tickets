@@ -3,13 +3,13 @@ package org.asta.abstracts;
 /**
  * @author Asta
  */
-public abstract class Functional {
+public abstract class Function {
 
     private String id;
 
-    public Functional() {
+    public Function() {
     }
-    public Functional(String id) {
+    public Function(String id) {
         this.id = id;
     }
 

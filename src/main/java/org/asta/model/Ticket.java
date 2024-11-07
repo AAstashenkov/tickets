@@ -1,7 +1,7 @@
 package org.asta.model;
 
-import org.asta.abstracts.Functional;
-import org.asta.interfaces.Share;
+import org.asta.abstracts.Function;
+import org.asta.interfaces.Shareable;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -11,7 +11,7 @@ import java.util.Random;
 /**
  * @author Asta
  */
-public class Ticket extends Functional implements Share {
+public class Ticket extends Function implements Shareable {
 
     private String id;
     private String concertHall;
@@ -53,6 +53,7 @@ public class Ticket extends Functional implements Share {
         this.eventCode = eventCode;
         this.time = time;
     }
+
 
     public String getId() {
         return id;
@@ -150,13 +151,14 @@ public class Ticket extends Functional implements Share {
     }
 
     @Override
-    public void shareByPhone(String phoneNumber) {
+    public void shared(long phoneNumber) {
         System.out.println("Ticket shared via phone to: " + phoneNumber);
     }
 
     @Override
-    public void shareByEmail(String email) {
+    public void shared(String email) {
         System.out.println("Ticket shared via email to: " + email);
     }
+
 }
 

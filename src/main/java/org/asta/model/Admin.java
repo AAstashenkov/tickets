@@ -11,7 +11,6 @@ import java.util.Random;
 public class Admin extends User {
 
     private Role role;
-    private static final Random random = new Random();
 
     public Admin() {
         this.role = Role.ADMIN;
@@ -23,12 +22,7 @@ public class Admin extends User {
     }
 
     public void checkTicket(Ticket ticket) {
-        String message = isTicketValid() ? "Good ticket!" : "Bad ticket!";
-        System.out.println(message);
-    }
-
-    private boolean isTicketValid() {
-        return random.nextBoolean();
+        System.out.println("Checked by Admin");
     }
 
     @Override

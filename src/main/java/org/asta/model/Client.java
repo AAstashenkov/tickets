@@ -20,9 +20,8 @@ public class Client extends User {
         this.role = Role.CLIENT;
     }
 
-    public void getTicket(Ticket ticket) {
-        this.ticket = ticket;
-        System.out.println("Ticket: " + ticket);
+    public Ticket getTicket(Ticket ticket) {
+        return ticket;
     }
 
     @Override

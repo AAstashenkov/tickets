@@ -3,7 +3,7 @@ package org.asta.abstracts;
 /**
  * @author Asta
  */
-public abstract class User extends Functional{
+public abstract class User extends Function {
 
     public User() {
     }
