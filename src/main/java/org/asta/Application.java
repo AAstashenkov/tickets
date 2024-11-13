@@ -1,37 +1,31 @@
 package org.asta;
 
-import org.asta.model.Admin;
-import org.asta.model.Client;
-import org.asta.model.Ticket;
-import org.asta.service.TicketService;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.asta.model.BusTicket;
+import org.asta.validator.Validator;
 
-import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 
 /**
  * @author Asta
  */
 public class Application {
-    public static void main(String[] args) {
-        TicketService ticketService = new TicketService();
-        Client client = new Client();
-        Admin admin = new Admin();
+    public static void main(String[] args) throws IOException {
 
-        admin.printRole();
-        client.printRole();
+        BufferedReader reader = new BufferedReader(new FileReader("src/main/java/tickets.txt"));
+        BusTicket ticket;
+        Validator validator = new Validator();
+        ObjectMapper mapper = new ObjectMapper();
+        String input;
+        while ((input = reader.readLine()) != null) {
+            ticket = mapper.readValue(input, BusTicket.class);
+            System.out.println(ticket.toString());
+            System.out.println(validator.validateBusTicket(ticket));
+        }
+        validator.getPopularViolation();
 
-        Ticket ticket = new Ticket("1234", "Arena", 101, LocalDateTime.now(),
-                true, 'B', 10.0, BigDecimal.valueOf(50.00));
-        Ticket ticket2 = new Ticket("7777", "Arena1", 333, LocalDateTime.now(),
-                true, 'A', 12.0, BigDecimal.valueOf(77.12));
-
-        ticketService.ticketsStorage.put(ticket.getId(), ticket);
-        ticketService.ticketsStorage.put(ticket2.getId(), ticket2);
-
-        ticket.shared("google@gmail.com");
-        ticket.shared(1238888888);
-
-        System.out.println(client.getTicket(ticket2));
-        admin.checkTicket(ticket);
     }
+
 }
