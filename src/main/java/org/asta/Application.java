@@ -6,39 +6,34 @@ import org.asta.hashSet.HashSet;
 /**
  * @author Asta
  */
-
 public class Application {
-
-    private static ArrayList arrayList = new ArrayList();
-
     public static void main(String[] args) {
 
-        System.out.println("Array list:");
+        ArrayList<String> arrayList = new ArrayList<>();
+        System.out.println("ArrayList: ");
         arrayList.put("One");
         arrayList.put("Two");
         arrayList.put("Three");
 
-        showArrayList();
+        showArrayList(arrayList);
 
         arrayList.delete(1);
-        System.out.println("Custom array list after deletions: ");
+        System.out.println("ArrayList: ");
+        showArrayList(arrayList);
 
-        showArrayList();
+        System.out.println("Get by index: " + arrayList.getByIndex(0));
 
-        System.out.println("Get by index: " + arrayList.getByIndex(2));
-
-        System.out.println("Creating a customHashSet:");
-        HashSet hashSet = new HashSet();
+        HashSet<Integer> hashSet = new HashSet<>();
         hashSet.add(1);
         hashSet.add(2);
         hashSet.add(3);
 
-        System.out.println("Displaying custom hashset");
+        System.out.println("HashSet:");
         hashSet.display();
     }
 
-    public static void showArrayList() {
-        for(int i = 0; i < arrayList.getSize(); i++) {
+    public static void showArrayList(ArrayList<String> arrayList) {
+        for (int i = 0; i < arrayList.getSize(); i++) {
             System.out.println(arrayList.getByIndex(i));
         }
     }

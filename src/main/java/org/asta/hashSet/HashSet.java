@@ -7,10 +7,10 @@ import java.util.List;
 /**
  * @author Asta
  */
-public class HashSet {
+public class HashSet<T> {
 
-    private final int ARRAY_SIZE = 100;
-    private List<List<Integer>> buckets;
+    private static final int ARRAY_SIZE = 100;
+    private List<List<T>> buckets;
 
     public HashSet() {
         buckets = new ArrayList<>(ARRAY_SIZE);
@@ -19,35 +19,36 @@ public class HashSet {
         }
     }
 
-    public void add(int key) {
+    public void add(T key) {
         int index = getIndex(key);
-        List<Integer> bucket = buckets.get(index);
+        List<T> bucket = buckets.get(index);
         if (!bucket.contains(key)) {
             bucket.add(key);
         }
     }
 
-    public void remove(int key) {
+    public void remove(T key) {
         int index = getIndex(key);
-        List<Integer> bucket = buckets.get(index);
-        bucket.remove(Integer.valueOf(key));
+        List<T> bucket = buckets.get(index);
+        bucket.remove(key);
     }
 
-    public boolean contains(int key) {
+    public boolean contains(T key) {
         int index = getIndex(key);
-        List<Integer> bucket = buckets.get(index);
+        List<T> bucket = buckets.get(index);
         return bucket.contains(key);
     }
 
     public void display() {
-        for (List<Integer> bucket : buckets) {
+        for (List<T> bucket : buckets) {
             if (!bucket.isEmpty()) {
                 System.out.println(bucket);
             }
         }
     }
 
-    private int getIndex(int key) {
-        return Math.abs(key % ARRAY_SIZE);
+    private int getIndex(T key) {
+        return Math.abs(key.hashCode() % ARRAY_SIZE);
     }
 }
+
