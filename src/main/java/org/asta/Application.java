@@ -1,37 +1,40 @@
 package org.asta;
 
-import org.asta.model.Admin;
-import org.asta.model.Client;
-import org.asta.model.Ticket;
-import org.asta.service.TicketService;
-
-import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import org.asta.arrayList.ArrayList;
+import org.asta.hashSet.HashSet;
 
 /**
  * @author Asta
  */
 public class Application {
     public static void main(String[] args) {
-        TicketService ticketService = new TicketService();
-        Client client = new Client();
-        Admin admin = new Admin();
 
-        admin.printRole();
-        client.printRole();
+        ArrayList<String> arrayList = new ArrayList<>();
+        System.out.println("ArrayList: ");
+        arrayList.put("One");
+        arrayList.put("Two");
+        arrayList.put("Three");
 
-        Ticket ticket = new Ticket("1234", "Arena", 101, LocalDateTime.now(),
-                true, 'B', 10.0, BigDecimal.valueOf(50.00));
-        Ticket ticket2 = new Ticket("7777", "Arena1", 333, LocalDateTime.now(),
-                true, 'A', 12.0, BigDecimal.valueOf(77.12));
+        showArrayList(arrayList);
 
-        ticketService.ticketsStorage.put(ticket.getId(), ticket);
-        ticketService.ticketsStorage.put(ticket2.getId(), ticket2);
+        arrayList.delete(1);
+        System.out.println("ArrayList: ");
+        showArrayList(arrayList);
 
-        ticket.shared("google@gmail.com");
-        ticket.shared(1238888888);
+        System.out.println("Get by index: " + arrayList.getByIndex(0));
 
-        System.out.println(client.getTicket(ticket2));
-        admin.checkTicket(ticket);
+        HashSet<Integer> hashSet = new HashSet<>();
+        hashSet.add(1);
+        hashSet.add(2);
+        hashSet.add(3);
+
+        System.out.println("HashSet:");
+        hashSet.display();
+    }
+
+    public static void showArrayList(ArrayList<String> arrayList) {
+        for (int i = 0; i < arrayList.getSize(); i++) {
+            System.out.println(arrayList.getByIndex(i));
+        }
     }
 }
