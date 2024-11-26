@@ -61,7 +61,9 @@ public class Application {
 
         System.out.println("HashSet");
         hashSet.display();
+
     }
+
 
     public static void showArrayList(ArrayList<String> arrayList) {
         for (int i = 0; i < arrayList.getSize(); i++) {
