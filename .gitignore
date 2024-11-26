@@ -2,14 +2,16 @@ target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
+META-INF
+Gradle/.gradle
 .gradle/
+out
 
 ### IntelliJ IDEA ###
 .idea
 *.iws
 *.iml
 *.ipr
-*.jar
 
 ### Eclipse ###
 .apt_generated
