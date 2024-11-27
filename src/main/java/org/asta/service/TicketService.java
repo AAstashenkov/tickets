@@ -1,11 +1,7 @@
 package org.asta.service;
 
-import org.asta.model.Admin;
-import org.asta.model.Client;
 import org.asta.model.Ticket;
 
-import java.math.BigDecimal;
-import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 

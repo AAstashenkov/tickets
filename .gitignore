@@ -2,12 +2,12 @@ target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
+META-INF
+Gradle/.gradle
+.gradle/
 
 ### IntelliJ IDEA ###
-.idea/modules.xml
-.idea/jarRepositories.xml
-.idea/compiler.xml
-.idea/libraries/
+.idea
 *.iws
 *.iml
 *.ipr
@@ -35,4 +35,6 @@ build/
 .vscode/
 
 ### Mac OS ###
-.DS_Store
+.DS_Store!/out/
+!/out/
+!/META-INF/
