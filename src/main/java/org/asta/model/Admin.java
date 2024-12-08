@@ -3,8 +3,6 @@ package org.asta.model;
 import org.asta.abstracts.User;
 import org.asta.enums.Role;
 
-import java.util.Random;
-
 /**
  * @author Asta
  */
